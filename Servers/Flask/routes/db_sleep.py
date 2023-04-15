@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-from Servers.db.sync_query.sql_query import cursor
+from Servers.db.sync_query.db_con import cursor
 from Servers.db.sql_query import *
 
 router = Blueprint(

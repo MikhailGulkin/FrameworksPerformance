@@ -3,7 +3,7 @@ from django.urls import path
 from django.views import View
 
 from Servers.db.sql_query import *
-from Servers.db.sync_query.sql_query import cursor
+from Servers.db.sync_query.db_con import cursor
 
 
 class OneRecord(View):

@@ -39,6 +39,10 @@ up-django-w-12:
 	cd 'Servers/Django/Django&Psycopg2'; \
 	gunicorn speed_test.wsgi:application --bind 0.0.0.0:5003 --workers 12
 
+up-django-w-13:
+	cd 'Servers/Django/Django&Psycopg2'; \
+	gunicorn speed_test.wsgi:application --bind 0.0.0.0:5003 --workers 13
+
 
 # http alch
 up-aiohttp-w-4-alch:
