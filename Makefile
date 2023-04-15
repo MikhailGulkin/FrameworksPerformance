@@ -26,6 +26,10 @@ up-django-orm-w-12:
 	cd 'Servers/Django/Django&ORM'; \
 	gunicorn speed_test.wsgi:application --bind 0.0.0.0:5002 --workers 12
 
+up-django-orm-w-13:
+	cd 'Servers/Django/Django&ORM'; \
+	gunicorn speed_test.wsgi:application --bind 0.0.0.0:5002 --workers 13
+
 # Django without ORM
 up-django-w-4:
 	cd 'Servers/Django/Django&Psycopg2'; \
