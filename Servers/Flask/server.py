@@ -1,54 +1,15 @@
 from flask import Flask
-
-from Servers.db_query.sync_query.sql_query import cursor
-from Servers.db_query.query import *
-
-app = Flask(__name__)
+from Servers.Flask.routes.db_select import router as db_sel_router
+from Servers.Flask.routes.db_sleep import router as db_sleep_router
+from Servers.Flask.routes.json_response import router as json_router
 
 
-@app.route('/1_record')
-def one_record():
-    cursor.execute(
-        QUERY_1
-    )
-    return {'len': len(cursor.fetchall())}
+def init_app() -> Flask:
+    app_ = Flask(__name__)
+    app_.register_blueprint(db_sel_router)
+    app_.register_blueprint(db_sleep_router)
+    app_.register_blueprint(json_router)
+    return app_
 
 
-@app.route('/1_s_sleep')
-def one_sec_sleep():
-    cursor.execute(
-        QUERY_SLEEP_1
-    )
-    return {'hello': "world"}
-
-
-@app.route('/1_k_records')
-def one_k_records():
-    cursor.execute(
-        QUERY_1K
-    )
-    return {'len': len(cursor.fetchall())}
-
-
-@app.route('/10_k_records')
-def ten_k_records():
-    cursor.execute(
-        QUERY_10K
-    )
-    return {'len': len(cursor.fetchall())}
-
-
-@app.route('/100_k_records')
-def thousand_k_records():
-    cursor.execute(
-        QUERY_100K
-    )
-    return {'len': len(cursor.fetchall())}
-
-
-@app.route('/1_kk_records')
-def one_million_records():
-    cursor.execute(
-        QUERY_1KK
-    )
-    return {'len': len(cursor.fetchall())}
+app = init_app()

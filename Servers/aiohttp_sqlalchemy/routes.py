@@ -1,7 +1,7 @@
 from aiohttp import web
 from sqlalchemy import text
 
-from Servers.db_query.query import *
+from Servers.db.query import *
 
 router = web.RouteTableDef()
 

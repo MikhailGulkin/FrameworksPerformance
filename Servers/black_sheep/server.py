@@ -3,19 +3,16 @@ import asyncio
 import asyncpg
 import blacksheep
 
-from .routes import configure_routes
-from ..db_query.async_query.sql_query import stub, create_engine, \
-    build_sessions, DataBaseProvider
+from Servers.black_sheep.routes import configure_routes
 
 
 async def init_app() -> blacksheep.Application:
-    app = blacksheep.Application()
-    engine = create_engine()
+    app_ = blacksheep.Application()
+
     # db = DataBaseProvider(session)
-    app.services.add_instance(build_sessions(engine=engine))
     # app.services.add_alias()
-    configure_routes(app, pool=build_sessions(engine=engine))
-    return app
+    configure_routes(app_)
+    return app_
 
 
 loop = asyncio.get_event_loop()

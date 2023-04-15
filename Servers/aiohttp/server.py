@@ -4,7 +4,9 @@ import asyncpg
 from aiohttp import web
 import asyncpg
 
-from Servers.aiohttp.routes import router
+from Servers.aiohttp.routes.json_response import router as json_router
+from Servers.aiohttp.routes.db_select import router as db_select_router
+from Servers.aiohttp.routes.db_sleep import router as db_sleep_router
 
 
 async def init_app() -> web.Application:
@@ -17,7 +19,10 @@ async def init_app() -> web.Application:
         host='localhost'
     )
 
-    app.add_routes(router)
+    app.add_routes(json_router)
+    app.add_routes(db_select_router)
+    app.add_routes(db_sleep_router)
+
     return app
 
 

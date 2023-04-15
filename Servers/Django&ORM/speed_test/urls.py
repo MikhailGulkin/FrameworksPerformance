@@ -1,10 +1,8 @@
-import time
-
-from django.contrib import admin
 from django.db import connection
 from django.http import JsonResponse
 from django.urls import path
 from django.views import View
+from Servers.db.query import QUERY_1
 
 
 class OneRecord(View):
@@ -13,11 +11,7 @@ class OneRecord(View):
         self.cursor = connection.cursor()
 
     def get(self, request):
-        self.cursor.execute(f"""
-                SELECT *
-                FROM Speed
-                LIMIT 1
-            """)
+        self.cursor.execute(QUERY_1)
         row = self.cursor.fetchall()
         return JsonResponse({'len': len(row)})
 

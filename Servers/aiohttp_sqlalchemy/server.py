@@ -1,4 +1,4 @@
-from ..db_query.async_query.sql_query import stub, create_engine, \
+from ..db.async_query.sql_query import stub, create_engine, \
     build_sessions, DataBaseProvider, async_sessionmaker
 
 from aiohttp import web
