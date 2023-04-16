@@ -1,19 +1,26 @@
-import asyncio
-
-import asyncpg
 import blacksheep
 
-from Servers.black_sheep.routes import configure_routes
+from Servers.black_sheep.routes.db_sleep import config_routes as config_sleep_routes
+from Servers.black_sheep.routes.db_select import config_routes as config_select_routes
+from Servers.black_sheep.routes.json_response import config_routes as config_json_response_routes
+from Servers.db.async_query.db import Database
 
 
-async def init_app() -> blacksheep.Application:
+def init_app() -> blacksheep.Application:
     app_ = blacksheep.Application()
+    db = Database()
 
-    # db = DataBaseProvider(session)
-    # app.services.add_alias()
-    configure_routes(app_)
+    @app_.on_start
+    async def before_start(application: blacksheep.Application) -> None:
+        await db.create_pool()
+        application.services.add_instance(
+            db.pool
+        )
+
+    config_sleep_routes(app_)
+    config_select_routes(app_)
+    config_json_response_routes(app_)
     return app_
 
 
-loop = asyncio.get_event_loop()
-app = loop.run_until_complete(init_app())
+app = init_app()
