@@ -3,9 +3,9 @@ import asyncio
 from aiohttp import web
 import asyncpg
 
-from Servers.aiohttp.routes.json_response import router as json_router
-from Servers.aiohttp.routes.db_select import router as db_select_router
-from Servers.aiohttp.routes.db_sleep import router as db_sleep_router
+from Servers.Aiohttp.routes.json_response import router as json_router
+from Servers.Aiohttp.routes.db_select import router as db_select_router
+from Servers.Aiohttp.routes.db_sleep import router as db_sleep_router
 
 
 async def init_app() -> web.Application:

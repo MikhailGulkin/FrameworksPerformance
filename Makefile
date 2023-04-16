@@ -48,16 +48,28 @@ up-django-w-13:
 
 # http asyncpg
 up-aiohttp-w-4:
-	gunicorn Servers.aiohttp.server:app --workers 4 --worker-class aiohttp.GunicornWebWorker --bind 0.0.0.0:5005
+	gunicorn Servers.Aiohttp.server:app --workers 4 --worker-class aiohttp.GunicornWebWorker --bind 0.0.0.0:5005
 up-aiohttp-w-12:
-	gunicorn Servers.aiohttp.server:app --workers 12 --worker-class aiohttp.GunicornWebWorker --bind 0.0.0.0:5005
+	gunicorn Servers.Aiohttp.server:app --workers 12 --worker-class aiohttp.GunicornWebWorker --bind 0.0.0.0:5005
 up-aiohttp-w-13:
-	gunicorn Servers.aiohttp.server:app --workers 13 --worker-class aiohttp.GunicornWebWorker --bind 0.0.0.0:5005
+	gunicorn Servers.Aiohttp.server:app --workers 13 --worker-class aiohttp.GunicornWebWorker --bind 0.0.0.0:5005
 
 # blacksheep
 up-sheep-w-4:
-	gunicorn Servers.black_sheep.server:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5006
+	gunicorn Servers.BlackSheep.server:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5006
 up-sheep-w-12:
-	gunicorn Servers.black_sheep.server:app --workers 12 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5006
+	gunicorn Servers.BlackSheep.server:app --workers 12 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5006
 up-sheep-w-13:
-	gunicorn Servers.black_sheep.server:app --workers 13 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5006
+	gunicorn Servers.BlackSheep.server:app --workers 13 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5006
+
+up-sanic-gn-w-4:
+	gunicorn Servers.Sanic.server:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5007
+up-sanic-gn-w-12:
+	gunicorn Servers.Sanic.server:app --workers 12 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5007
+up-sanic-gn-w-13:
+	gunicorn Servers.Sanic.server:app --workers 13 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5007
+
+up-sanic-w-13:
+	sanic Servers.Sanic.server:app  --host=0.0.0.0 --port=5007 --no-motd --workers=13
+up-sanic-fast:
+	sanic Servers.Sanic.server:app  --host=0.0.0.0 --port=5007 --no-motd --fast

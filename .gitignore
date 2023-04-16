@@ -1,4 +1,5 @@
 env
 linuxEnv
 __pychache__
+__pycache__/
 .idea
