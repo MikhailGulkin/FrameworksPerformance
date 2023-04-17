@@ -3,3 +3,4 @@ linuxEnv
 __pychache__
 __pycache__/
 .idea
+node_modules
