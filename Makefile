@@ -69,7 +69,9 @@ up-sanic-gn-w-12:
 up-sanic-gn-w-13:
 	gunicorn Servers.Sanic.server:app --workers 13 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:5007
 
+up-sanic-w-4:
+	sanic Servers.Sanic.server:app --host=0.0.0.0 --port=5007 --no-motd --workers=4
+up-sanic-w-12:
+	sanic Servers.Sanic.server:app  --host=0.0.0.0 --port=5007 --no-motd --workers=12
 up-sanic-w-13:
 	sanic Servers.Sanic.server:app  --host=0.0.0.0 --port=5007 --no-motd --workers=13
-up-sanic-fast:
-	sanic Servers.Sanic.server:app  --host=0.0.0.0 --port=5007 --no-motd --fast

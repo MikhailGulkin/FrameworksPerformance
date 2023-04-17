@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 
 from Servers.db.async_query.db import Database
 from Servers.FastAPI.routers.db_select import router as db_select_router

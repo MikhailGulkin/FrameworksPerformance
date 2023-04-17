@@ -19,6 +19,4 @@ def init_app() -> Sanic:
     return app_
 
 
-# loop = asyncio.get_event_loop()
-# app = loop.run_until_complete(init_app())
 app = init_app()
