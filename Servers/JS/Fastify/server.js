@@ -1,21 +1,37 @@
-const { cluster, clusterWorkerSize, startServer } = require("./config");
+const { parseCmdWorkers, parseCmdPort } = require("../utils/parseCmd");
 
-const run = () => {
-  if (clusterWorkerSize > 1) {
-    if (cluster.isMaster) {
-      for (let i = 0; i < clusterWorkerSize; i++) {
-        cluster.fork();
-      }
+const cluster = require("cluster");
+const fastify = require("fastify")({
+  logger: false,
+  disableRequestLogging: true,
+});
 
-      cluster.on("exit", function (worker) {
-        console.log("Worker", worker.id, " has exited.");
-      });
-    } else {
-      startServer();
-    }
-  } else {
-    startServer();
+fastify.register(require("./routers/jsoneResponse"));
+fastify.register(require("./routers/dbSleep"));
+fastify.register(require("./routers/dbSelect"));
+
+fastify.register(require("@fastify/postgres"), {
+  connectionString: "postgres://postgres:1234@localhost:5431/SpeedTest",
+});
+
+const port = parseCmdPort(process.argv);
+const clusterWorkerSize = parseCmdWorkers(process.argv);
+const startServer = async () => {
+  try {
+    await fastify.listen({ port: port });
+    console.log(
+      `server listening on ${fastify.server.address().port} and worker ${
+        process.pid
+      }`
+    );
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
   }
 };
 
-run();
+module.exports = {
+  startServer,
+  clusterWorkerSize,
+  cluster
+}
