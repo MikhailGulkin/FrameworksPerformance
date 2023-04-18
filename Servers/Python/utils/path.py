@@ -19,3 +19,7 @@ class DbSelect:
     one_k_records = '/1_k_records '
     ten_k_records = '/10_k_records'
     hundred_k_records = '/100_k_records'
+
+
+class ExtraTests:
+    hello_world = '/hello'

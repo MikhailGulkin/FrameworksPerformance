@@ -9,6 +9,7 @@ const fastify = require("fastify")({
 fastify.register(require("./routers/jsoneResponse"));
 fastify.register(require("./routers/dbSleep"));
 fastify.register(require("./routers/dbSelect"));
+fastify.register(require("./routers/extra"));
 
 fastify.register(require("@fastify/postgres"), {
   connectionString: connection_pg,

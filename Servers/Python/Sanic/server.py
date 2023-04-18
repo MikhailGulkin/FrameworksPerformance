@@ -2,6 +2,7 @@ from sanic import Sanic
 from Servers.Python.Sanic.routers.json_response import bp as json_response_bp
 from Servers.Python.Sanic.routers.db_sleep import bp as db_sleep_bp
 from Servers.Python.Sanic.routers.db_select import bp as db_select_bp
+from Servers.Python.Sanic.routers.extra import bp as extra_bp
 from Servers.Python.utils.db.async_query.db import Database
 
 
@@ -14,7 +15,7 @@ def init_app() -> Sanic:
         await db.create_pool()
         app__.ctx.pool = db.pool
 
-    app_.blueprint([db_sleep_bp, db_select_bp, json_response_bp])
+    app_.blueprint([db_sleep_bp, db_select_bp, json_response_bp, extra_bp])
 
     return app_
 

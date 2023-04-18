@@ -65,18 +65,28 @@ up-sheep-w-13:
 # Sanic
 up-sanic-w-4:
 	sanic Servers.Python.Sanic.server:app --host=0.0.0.0 --port=5007 --no-motd --workers=4
+
 up-sanic-w-12:
 	sanic Servers.Python.Sanic.server:app  --host=0.0.0.0 --port=5007 --no-motd --workers=12
 up-sanic-w-13:
 	sanic Servers.Python.Sanic.server:app  --host=0.0.0.0 --port=5007 --no-motd --workers=13
 
-# Fastify
+
 up-fastify-w-4:
 	cd 'Servers/JS/Fastify'; \
 	node index.js workers=4 port=5008
+
 up-fastify-w-12:
 	cd 'Servers/JS/Fastify'; \
 	node index.js workers=12 port=5008
 up-fastify-w-13:
 	cd 'Servers/JS/Fastify'; \
 	node index.js workers=13 port=5008
+
+# Japronto
+up-japronto-w-4:
+	python -m Servers.Python.Japronto.server workers=4 port=5009
+up-japronto-w-12:
+	python -m Servers.Python.Japronto.server workers=12 port=5009
+up-japronto-w-13:
+	python -m Servers.Python.Japronto.server workers=13 port=5009

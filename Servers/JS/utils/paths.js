@@ -19,4 +19,7 @@ module.exports = {
     oneSecondSleep: "/1_s_sleep",
     twoSecondSleep: "/2_s_sleep",
   },
+  extraTests: {
+    helloWorld: "/hello"
+  }
 };
