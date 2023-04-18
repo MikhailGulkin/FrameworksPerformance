@@ -1,11 +1,12 @@
 from fastapi import APIRouter, Request
 
-from Servers.Python.db.sql_query import *
+from Servers.Python.utils.db.sql_query import *
+from Servers.Python.utils.path import DbSleep
 
 router = APIRouter()
 
 
-@router.get("/0_25_s_sleep")
+@router.get(DbSleep.zero_25_second_sleep)
 async def zero_25_second_sleep(request: Request) -> dict:
     async with request.app.state.pgpool.acquire() as con:
         await con.fetch(
@@ -14,7 +15,7 @@ async def zero_25_second_sleep(request: Request) -> dict:
         return {'hello': 'world'}
 
 
-@router.get('/0_5_s_sleep')
+@router.get(DbSleep.zero_5_second_sleep)
 async def zero_5_second_sleep(request: Request) -> dict:
     async with request.app.state.pgpool.acquire() as con:
         await con.fetch(
@@ -23,7 +24,7 @@ async def zero_5_second_sleep(request: Request) -> dict:
         return {'hello': 'world'}
 
 
-@router.get('/0_75_s_sleep')
+@router.get(DbSleep.zero_75_second_sleep)
 async def zero_75_second_sleep(request: Request) -> dict:
     async with request.app.state.pgpool.acquire() as con:
         await con.fetch(
@@ -32,7 +33,7 @@ async def zero_75_second_sleep(request: Request) -> dict:
         return {'hello': 'world'}
 
 
-@router.get('/1_s_sleep')
+@router.get(DbSleep.one_second_sleep)
 async def one_second_sleep(request: Request) -> dict:
     async with request.app.state.pgpool.acquire() as con:
         await con.fetch(
@@ -41,7 +42,7 @@ async def one_second_sleep(request: Request) -> dict:
         return {'hello': 'world'}
 
 
-@router.get('/2_s_sleep')
+@router.get(DbSleep.two_second_sleep)
 async def two_second_sleep(request: Request) -> dict:
     async with request.app.state.pgpool.acquire() as con:
         await con.fetch(

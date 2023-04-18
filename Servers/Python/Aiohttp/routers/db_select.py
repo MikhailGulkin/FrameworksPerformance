@@ -1,11 +1,12 @@
 from aiohttp import web
 
-from Servers.Python.db.sql_query import *
+from Servers.Python.utils.db.sql_query import *
+from Servers.Python.utils.path import DbSelect
 
 router = web.RouteTableDef()
 
 
-@router.get('/1_record')
+@router.get(DbSelect.one_record)
 async def one_record(request: web.Request) -> web.Response:
     async with request.app['pool'].acquire() as con:
         return web.json_response({'len': len(
@@ -14,7 +15,7 @@ async def one_record(request: web.Request) -> web.Response:
             ))})
 
 
-@router.get('/1_k_records')
+@router.get(DbSelect.one_k_records)
 async def one_k_records(request: web.Request) -> web.Response:
     async with request.app['pool'].acquire() as con:
         return web.json_response({'len': len(
@@ -23,7 +24,7 @@ async def one_k_records(request: web.Request) -> web.Response:
             ))})
 
 
-@router.get('/10_k_records')
+@router.get(DbSelect.ten_k_records)
 async def ten_k_records(request: web.Request) -> web.Response:
     async with request.app['pool'].acquire() as con:
         return web.json_response({'len': len(
@@ -32,8 +33,8 @@ async def ten_k_records(request: web.Request) -> web.Response:
             ))})
 
 
-@router.get('/100_k_records')
-async def thousand_k_records(request: web.Request) -> web.Response:
+@router.get(DbSelect.hundred_k_records)
+async def hundred_k_records(request: web.Request) -> web.Response:
     async with request.app['pool'].acquire() as con:
         return web.json_response({'len': len(
             await con.fetch(

@@ -1,7 +1,8 @@
 from flask import Blueprint
 
-from Servers.Python.db.sync_query.db_con import cursor
-from Servers.Python.db.sql_query import *
+from Servers.Python.utils.db.sync_query.db_con import cursor
+from Servers.Python.utils.db.sql_query import *
+from Servers.Python.utils.path import DbSelect
 
 bp = Blueprint(
     'db_select_blueprint',
@@ -9,7 +10,7 @@ bp = Blueprint(
 )
 
 
-@bp.route('/1_record')
+@bp.route(DbSelect.one_record)
 def one_record():
     cursor.execute(
         QUERY_1
@@ -17,7 +18,7 @@ def one_record():
     return {'len': len(cursor.fetchall())}
 
 
-@bp.route('/1_k_records')
+@bp.route(DbSelect.one_k_records)
 def one_k_records():
     cursor.execute(
         QUERY_1K
@@ -25,7 +26,7 @@ def one_k_records():
     return {'len': len(cursor.fetchall())}
 
 
-@bp.route('/10_k_records')
+@bp.route(DbSelect.ten_k_records)
 def ten_k_records():
     cursor.execute(
         QUERY_10K
@@ -33,8 +34,8 @@ def ten_k_records():
     return {'len': len(cursor.fetchall())}
 
 
-@bp.route('/100_k_records')
-def thousand_k_records():
+@bp.route(DbSelect.hundred_k_records)
+def hundred_k_records():
     cursor.execute(
         QUERY_100K
     )

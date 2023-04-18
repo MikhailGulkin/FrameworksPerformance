@@ -1,9 +1,10 @@
 from blacksheep import Application
 
-from Servers.Python.BlackSheep.routes.db_sleep import config_routes as config_sleep_routes
-from Servers.Python.BlackSheep.routes.db_select import config_routes as config_select_routes
-from Servers.Python.BlackSheep.routes.json_response import config_routes as config_json_response_routes
-from Servers.Python.db.async_query.db import Database
+from Servers.Python.BlackSheep.routers.db_sleep import config_routes as config_sleep_routes
+from Servers.Python.BlackSheep.routers.db_select import config_routes as config_select_routes
+from Servers.Python.BlackSheep.routers.json_response import config_routes as config_json_response_routes
+
+from Servers.Python.utils.db.async_query.db import Database
 
 
 def init_app() -> Application:

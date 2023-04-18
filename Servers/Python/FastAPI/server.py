@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from Servers.Python.db.async_query.db import Database
+from Servers.Python.utils.db.async_query.db import Database
 from Servers.Python.FastAPI.routers.db_select import router as db_select_router
 from Servers.Python.FastAPI.routers.db_sleep import router as db_sleep_router
 from Servers.Python.FastAPI.routers.json_response import router as json_router

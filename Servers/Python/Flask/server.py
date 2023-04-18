@@ -1,7 +1,8 @@
 from flask import Flask
-from Servers.Python.Flask.routes.db_select import bp as db_sel_bp
-from Servers.Python.Flask.routes.db_sleep import bp as db_sleep_bp
-from Servers.Python.Flask.routes.json_response import bp as json_bp
+
+from Servers.Python.Flask.routers.db_select import bp as db_sel_bp
+from Servers.Python.Flask.routers.db_sleep import bp as db_sleep_bp
+from Servers.Python.Flask.routers.json_response import bp as json_bp
 
 
 def init_app() -> Flask:

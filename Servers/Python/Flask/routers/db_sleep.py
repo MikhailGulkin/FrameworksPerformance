@@ -1,7 +1,8 @@
 from flask import Blueprint
 
-from Servers.Python.db.sync_query.db_con import cursor
-from Servers.Python.db.sql_query import *
+from Servers.Python.utils.db.sync_query.db_con import cursor
+from Servers.Python.utils.db.sql_query import *
+from Servers.Python.utils.path import DbSleep
 
 bp = Blueprint(
     'db_sleep',
@@ -9,7 +10,7 @@ bp = Blueprint(
 )
 
 
-@bp.route('/0_25_s_sleep')
+@bp.route(DbSleep.zero_25_second_sleep)
 def zero_25_second_sleep():
     cursor.execute(
         QUERY_SLEEP_0_25
@@ -17,7 +18,7 @@ def zero_25_second_sleep():
     return {'hello': "world"}
 
 
-@bp.route('/0_5_s_sleep')
+@bp.route(DbSleep.zero_5_second_sleep)
 def zero_5_second_sleep():
     cursor.execute(
         QUERY_SLEEP_0_5
@@ -25,7 +26,7 @@ def zero_5_second_sleep():
     return {'hello': "world"}
 
 
-@bp.route('/0_75_s_sleep')
+@bp.route(DbSleep.zero_75_second_sleep)
 def zero_75_second_sleep():
     cursor.execute(
         QUERY_SLEEP_0_75
@@ -33,7 +34,7 @@ def zero_75_second_sleep():
     return {'hello': "world"}
 
 
-@bp.route('/1_s_sleep')
+@bp.route(DbSleep.one_second_sleep)
 def one_second_sleep():
     cursor.execute(
         QUERY_SLEEP_1
@@ -41,7 +42,7 @@ def one_second_sleep():
     return {'hello': "world"}
 
 
-@bp.route('/2_s_sleep')
+@bp.route(DbSleep.two_second_sleep)
 def two_second_sleep():
     cursor.execute(
         QUERY_SLEEP_2

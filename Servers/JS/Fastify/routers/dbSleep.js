@@ -5,8 +5,9 @@ const {
   QUERY_SLEEP_1,
   QUERY_SLEEP_2,
 } = require("../../db/query");
+const { dbSleep } = require("../../utils/paths");
 const sleepRouter = async (fastify) => {
-  fastify.get("/0_25_s_sleep", async () => {
+  fastify.get(dbSleep.zero25SecondSleep, async () => {
     const client = await fastify.pg.connect();
     try {
       await client.query(QUERY_SLEEP_0_25);
@@ -15,7 +16,7 @@ const sleepRouter = async (fastify) => {
       client.release();
     }
   });
-  fastify.get("/0_5_s_sleep", async () => {
+  fastify.get(dbSleep.zero5SecondSleep, async () => {
     const client = await fastify.pg.connect();
     try {
       await client.query(QUERY_SLEEP_0_5);
@@ -24,7 +25,7 @@ const sleepRouter = async (fastify) => {
       client.release();
     }
   });
-  fastify.get("/0_75_s_sleep", async () => {
+  fastify.get(dbSleep.zero75SecondSleep, async () => {
     const client = await fastify.pg.connect();
     try {
       await client.query(QUERY_SLEEP_0_75);
@@ -33,7 +34,7 @@ const sleepRouter = async (fastify) => {
       client.release();
     }
   });
-  fastify.get("/1_s_sleep", async () => {
+  fastify.get(dbSleep.oneSecondSleep, async () => {
     const client = await fastify.pg.connect();
     try {
       await client.query(QUERY_SLEEP_1);
@@ -42,7 +43,7 @@ const sleepRouter = async (fastify) => {
       client.release();
     }
   });
-  fastify.get("/2_s_sleep", async () => {
+  fastify.get(dbSleep.twoSecondSleep, async () => {
     const client = await fastify.pg.connect();
     try {
       await client.query(QUERY_SLEEP_2);

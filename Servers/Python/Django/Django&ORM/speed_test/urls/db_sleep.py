@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.urls import path
 from django.views import View
 
-from Servers.Python.db.sql_query import *
+from Servers.Python.utils.db.sql_query import *
 
 
 class Zero25SecondSleep(View):

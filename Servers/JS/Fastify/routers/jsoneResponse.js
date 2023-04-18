@@ -3,6 +3,7 @@ const tenKJsonData = require("../../../test_data/10K.json");
 const hundredJsonData = require("../../../test_data/100K.json");
 const oneKKJsonData = require("../../../test_data/1M.json");
 const fiveKKJsonData = require("../../../test_data/5M.json");
+const { jsonResponse } = require("../../utils/paths");
 
 const oneKJson = async () => {
   return oneKJsonData;
@@ -21,10 +22,10 @@ const fiveKKJson = async () => {
 };
 
 const jsonRouter = async (fastify) => {
-  fastify.get("/1_k_json", oneKJson);
-  fastify.get("/10_k_json", tenKJson);
-  fastify.get("/100_k_json", hundredKJson);
-  fastify.get("/1_kk_json", oneKKJson);
-  fastify.get("/5_kk_json", fiveKKJson);
+  fastify.get(jsonResponse.oneKJson, oneKJson);
+  fastify.get(jsonResponse.tenKJson, tenKJson);
+  fastify.get(jsonResponse.hundredKJson, hundredKJson);
+  fastify.get(jsonResponse.oneKKJson, oneKKJson);
+  fastify.get(jsonResponse.fiveKKJson, fiveKKJson);
 };
 module.exports = jsonRouter;

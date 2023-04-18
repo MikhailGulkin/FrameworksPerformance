@@ -2,8 +2,8 @@ from django.http import JsonResponse
 from django.urls import path
 from django.views import View
 
-from Servers.Python.db.sql_query import *
-from Servers.Python.db.sync_query.db_con import cursor
+from Servers.Python.utils.db.sql_query import *
+from Servers.Python.utils.db.sync_query.db_con import cursor
 
 
 class Zero25SecondSleep(View):

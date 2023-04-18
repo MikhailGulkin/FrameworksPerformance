@@ -1,5 +1,5 @@
 const { parseCmdWorkers, parseCmdPort } = require("../utils/parseCmd");
-
+const { connection_pg } = require("../db/connection");
 const cluster = require("cluster");
 const fastify = require("fastify")({
   logger: false,
@@ -11,7 +11,7 @@ fastify.register(require("./routers/dbSleep"));
 fastify.register(require("./routers/dbSelect"));
 
 fastify.register(require("@fastify/postgres"), {
-  connectionString: "postgres://postgres:1234@localhost:5431/SpeedTest",
+  connectionString: connection_pg,
 });
 
 const port = parseCmdPort(process.argv);
@@ -33,5 +33,5 @@ const startServer = async () => {
 module.exports = {
   startServer,
   clusterWorkerSize,
-  cluster
-}
+  cluster,
+};

@@ -2,7 +2,7 @@ from sanic import Sanic
 from Servers.Python.Sanic.routers.json_response import bp as json_response_bp
 from Servers.Python.Sanic.routers.db_sleep import bp as db_sleep_bp
 from Servers.Python.Sanic.routers.db_select import bp as db_select_bp
-from Servers.Python.db.async_query.db import Database
+from Servers.Python.utils.db.async_query.db import Database
 
 
 def init_app() -> Sanic:

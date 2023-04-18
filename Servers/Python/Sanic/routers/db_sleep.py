@@ -1,11 +1,12 @@
 import json
 from sanic import Blueprint, Request, json
-from Servers.Python.db.sql_query import *
+from Servers.Python.utils.db.sql_query import *
+from Servers.Python.utils.path import DbSleep
 
 bp = Blueprint('db_sleep')
 
 
-@bp.get("/0_25_s_sleep")
+@bp.get(DbSleep.zero_25_second_sleep)
 async def zero_25_second_sleep(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         await con.fetch(
@@ -14,7 +15,7 @@ async def zero_25_second_sleep(request: Request) -> json:
         return json({'hello': 'world'})
 
 
-@bp.get('/0_5_s_sleep')
+@bp.get(DbSleep.zero_5_second_sleep)
 async def zero_5_second_sleep(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         await con.fetch(
@@ -23,7 +24,7 @@ async def zero_5_second_sleep(request: Request) -> json:
         return json({'hello': 'world'})
 
 
-@bp.get('/0_75_s_sleep')
+@bp.get(DbSleep.zero_75_second_sleep)
 async def zero_75_second_sleep(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         await con.fetch(
@@ -32,7 +33,7 @@ async def zero_75_second_sleep(request: Request) -> json:
         return json({'hello': 'world'})
 
 
-@bp.get("/1_s_sleep")
+@bp.get(DbSleep.one_second_sleep)
 async def one_second_sleep(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         await con.fetch(
@@ -41,7 +42,7 @@ async def one_second_sleep(request: Request) -> json:
         return json({'Hello': 'World'})
 
 
-@bp.get('/2_s_sleep')
+@bp.get(DbSleep.two_second_sleep)
 async def two_second_sleep(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         await con.fetch(

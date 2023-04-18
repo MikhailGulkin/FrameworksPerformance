@@ -1,11 +1,13 @@
 import json
 from sanic import Blueprint, Request, json
-from Servers.Python.db.sql_query import *
+
+from Servers.Python.utils.db.sql_query import *
+from Servers.Python.utils.path import DbSelect
 
 bp = Blueprint('db_select')
 
 
-@bp.get("/1_record")
+@bp.get(DbSelect.one_record)
 async def one_record(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         return json({'len': len(await con.fetch(
@@ -13,7 +15,7 @@ async def one_record(request: Request) -> json:
         ))})
 
 
-@bp.get('/1_k_records')
+@bp.get(DbSelect.one_k_records)
 async def one_k_records(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         return json({'len': len(
@@ -22,7 +24,7 @@ async def one_k_records(request: Request) -> json:
             ))})
 
 
-@bp.get('/10_k_records')
+@bp.get(DbSelect.ten_k_records)
 async def ten_k_records(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         return json({'len': len(
@@ -31,8 +33,8 @@ async def ten_k_records(request: Request) -> json:
             ))})
 
 
-@bp.get('/100_k_records')
-async def thousand_k_records(request: Request) -> json:
+@bp.get(DbSelect.hundred_k_records)
+async def hundred_k_records(request: Request) -> json:
     async with request.app.ctx.pool.acquire() as con:
         return json({'len': len(
             await con.fetch(
