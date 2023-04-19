@@ -100,3 +100,14 @@ up-express-w-12:
 up-express-w-13:
 	cd 'Servers/JS/Express'; \
 	node index.js workers=13 port=5010
+
+
+up-koa-w-4:
+	cd 'Servers/JS/Koa'; \
+	node index.js workers=4 port=5011
+up-koa-w-12:
+	cd 'Servers/JS/Koa'; \
+	node index.js workers=12 port=5011
+up-koa-w-13:
+	cd 'Servers/JS/Koa'; \
+	node index.js workers=13 port=5011
