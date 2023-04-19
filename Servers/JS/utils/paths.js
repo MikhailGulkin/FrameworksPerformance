@@ -8,7 +8,7 @@ module.exports = {
   },
   dbSelect: {
     oneRecord: "/1_record",
-    oneKRecord: "/1_k_records ",
+    oneKRecord: "/1_k_records",
     tenKRecords: "/10_k_records",
     hundredKRecord: "/100_k_records",
   },
